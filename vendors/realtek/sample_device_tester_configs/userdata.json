@@ -1,0 +1,63 @@
+{
+  "sourcePath": "/working/github/amazon-freertos",
+  "vendorPath": "/working/github/amazon-freertos/vendors/realtek/boards/amebaD",
+  "inputImageFilePath": "/working/github/amazon-freertos/projects/realtek/amebaD/IAR/aws_demos/Debug/Exe/km4_image/km0_km4_image2.bin",
+  "outputSignatureFilePath": "/working/github/amazon-freertos/projects/realtek/amebaD/IAR/aws_demos/Debug/Exe/km4_image/IDT-OTA-Signature",
+  "buildTool": {
+    "name": "IAR",
+    "version": "8.40.1",
+    "command": [
+      "/working/github/devicetester_freertos_win/configs/script_templates/build.bat {{enableTests}}"
+    ]
+  },
+  "flashTool": {
+    "name": "1-10_MP_Image_Tool",
+    "version": "2.4",
+    "command": [
+      "/working/github/devicetester_freertos_win/configs/script_templates/flash.bat {{buildImageName}}"
+    ],
+    "buildImageInfo" : {
+      "testsImageName": "aws_tests",
+      "demosImageName": "aws_demos"
+    }
+  },
+  "clientWifiConfig": {
+    "wifiSSID": "Goodway",
+    "wifiPassword": "89191200",
+    "wifiSecurityType": "eWiFiSecurityWPA2"
+  },
+  "testWifiConfig": {
+    "wifiSSID": "Goodway",
+    "wifiPassword": "89191200",
+    "wifiSecurityType": "eWiFiSecurityWPA2"
+  },
+  "echoServerCertificateConfiguration": {
+    "certificateGenerationMethod": "Automatic",
+    "customPath": {
+      "certificatePath":"<C:/path/to/certificate>",
+      "privateKeyPath": "<C:/path/to/privateKey>"
+    },
+    "eccCurveFormat": "P256"
+  },
+  "echoServerConfiguration": {
+    "securePortForSecureSocket": 33333,
+    "insecurePortForSecureSocket": 33334,
+    "insecurePortForWiFi": 33335
+  },
+  "otaConfiguration": {
+    "otaDemoConfigFilePath": "/working/github/amazon-freertos/vendors/realtek/boards/amebaD/aws_demos/config_files/aws_demo_config.h",
+    "otaFirmwareFilePath": "/working/github/amazon-freertos/projects/realtek/amebaD/IAR/aws_demos/Debug/Exe/km4_image/OTA_ALL_sig.bin",
+    "deviceFirmwareFileName": "OTA_ALL_sig.bin",
+    "codeSigningConfiguration": {
+      "signingMethod": "Custom",
+      "signerHashingAlgorithm": "SHA256",
+      "signerSigningAlgorithm": "ECDSA",
+      "signerCertificate": "/working/github/amazon-freertos/projects/realtek/amebaD/IAR/aws_demos/ecdsa-sha256-signer.crt.pem",
+      "signerCertificateFileName": "ecdsa-sha256-signer.crt.pem",
+      "compileSignerCertificate": true,
+      "signCommand": [
+        "/working/github/devicetester_freertos_win/configs/script_templates/sign.bat {{inputImageFilePath}} {{outputSignatureFilePath}}"
+      ]
+    }
+  }
+}
